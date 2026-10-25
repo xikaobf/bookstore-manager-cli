@@ -7,9 +7,9 @@ export class RegraNegocioError extends Error {
 
 export function exibirErro(erro: unknown): void {
   if (erro instanceof RegraNegocioError) {
-    console.log(`\n⚠ ${erro.message}`);
+    console.log(`\n[AVISO] ${erro.message}`);
   } else {
-    console.error("\n✖ Erro inesperado ao processar a operação.");
+    console.error("\n[ERRO] Erro inesperado ao processar a operação.");
     console.error(erro instanceof Error ? erro.message : erro);
   }
 }
