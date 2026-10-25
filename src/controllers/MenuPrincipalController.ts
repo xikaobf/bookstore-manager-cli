@@ -1,11 +1,13 @@
 import { MENU_PRINCIPAL } from "../menus/menuPrincipal";
 import { AutorController } from "./AutorController";
+import { LivroController } from "./LivroController";
 import { lerTexto } from "../utils/entrada";
 import { exibirErro } from "../utils/erros";
 
 export class MenuPrincipalController {
   constructor(
-    private readonly autorController: AutorController = new AutorController()
+    private readonly autorController: AutorController = new AutorController(),
+    private readonly livroController: LivroController = new LivroController()
   ) {}
 
   async iniciar(): Promise<void> {
@@ -25,7 +27,7 @@ export class MenuPrincipalController {
   private async tratarOpcao(opcao: string): Promise<boolean> {
     switch (opcao) {
       case "1": await this.autorController.iniciar(); break;
-      case "2":
+      case "2": await this.livroController.iniciar(); break;
       case "3":
       case "4":
       case "5":
