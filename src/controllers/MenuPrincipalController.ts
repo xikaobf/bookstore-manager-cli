@@ -5,6 +5,7 @@ import { ClienteController } from "./ClienteController";
 import { EmprestimoController } from "./EmprestimoController";
 import { lerTexto } from "../utils/entrada";
 import { exibirErro } from "../utils/erros";
+import { RelatorioController } from "./RelatorioController";
 
 export class MenuPrincipalController {
   constructor(
