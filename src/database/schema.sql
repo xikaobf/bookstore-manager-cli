@@ -1,16 +1,11 @@
--- BookStore Manager CLI - estrutura do banco
-DROP TABLE IF EXISTS emprestimos CASCADE;
-DROP TABLE IF EXISTS livros CASCADE;
-DROP TABLE IF EXISTS clientes CASCADE;
-DROP TABLE IF EXISTS autores CASCADE;
 
-CREATE TABLE autores (
+CREATE TABLE IF NOT EXISTS autores (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL UNIQUE,
     nacionalidade VARCHAR(60)
 );
 
-CREATE TABLE livros (
+CREATE TABLE IF NOT EXISTS livros (
     id SERIAL PRIMARY KEY,
     titulo VARCHAR(150) NOT NULL,
     ano_publicacao INTEGER,
@@ -21,14 +16,14 @@ CREATE TABLE livros (
     CHECK (quantidade_disponivel <= quantidade_total)
 );
 
-CREATE TABLE clientes (
+CREATE TABLE IF NOT EXISTS clientes (
     id SERIAL PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     email VARCHAR(150) NOT NULL UNIQUE,
     telefone VARCHAR(20)
 );
 
-CREATE TABLE emprestimos (
+CREATE TABLE IF NOT EXISTS emprestimos (
     id SERIAL PRIMARY KEY,
     livro_id INTEGER NOT NULL REFERENCES livros(id),
     cliente_id INTEGER NOT NULL REFERENCES clientes(id),
@@ -36,4 +31,4 @@ CREATE TABLE emprestimos (
     data_prevista_devolucao DATE NOT NULL,
     data_devolucao DATE, -- NULL enquanto não devolvido
     CHECK (data_prevista_devolucao > data_emprestimo)
-);  
+);
