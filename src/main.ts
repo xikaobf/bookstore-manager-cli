@@ -1,11 +1,11 @@
 import { pool, testarConexao } from "./database/connection";
-import { AutorController } from "./controllers/AutorController";
+import { MenuPrincipalController } from "./controllers/MenuPrincipalController";
 
 async function iniciar(): Promise<void> {
   try {
     await testarConexao();
     console.log("Conectado ao PostgreSQL com sucesso!");
-    await new AutorController().iniciar();
+    await new MenuPrincipalController().iniciar();
   } catch (erro) {
     console.error("Falha ao iniciar a aplicação:", erro);
   } finally {
