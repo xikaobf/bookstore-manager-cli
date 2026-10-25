@@ -1,15 +1,17 @@
 import { MENU_PRINCIPAL } from "../menus/menuPrincipal";
 import { AutorController } from "./AutorController";
 import { LivroController } from "./LivroController";
+import { ClienteController } from "./ClienteController";
+import { EmprestimoController } from "./EmprestimoController";
 import { lerTexto } from "../utils/entrada";
 import { exibirErro } from "../utils/erros";
-import { ClienteController } from "./ClienteController";
 
 export class MenuPrincipalController {
-    constructor(
+  constructor(
     private readonly autorController: AutorController = new AutorController(),
     private readonly livroController: LivroController = new LivroController(),
-    private readonly clienteController: ClienteController = new ClienteController()
+    private readonly clienteController: ClienteController = new ClienteController(),
+    private readonly emprestimoController: EmprestimoController = new EmprestimoController()
   ) {}
 
   async iniciar(): Promise<void> {
@@ -31,7 +33,7 @@ export class MenuPrincipalController {
       case "1": await this.autorController.iniciar(); break;
       case "2": await this.livroController.iniciar(); break;
       case "3": await this.clienteController.iniciar(); break;
-      case "4":
+      case "4": await this.emprestimoController.iniciar(); break;
       case "5":
         console.log("\nMódulo ainda não disponível.");
         break;
