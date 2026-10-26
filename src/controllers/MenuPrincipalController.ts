@@ -12,7 +12,8 @@ export class MenuPrincipalController {
     private readonly autorController: AutorController = new AutorController(),
     private readonly livroController: LivroController = new LivroController(),
     private readonly clienteController: ClienteController = new ClienteController(),
-    private readonly emprestimoController: EmprestimoController = new EmprestimoController()
+    private readonly emprestimoController: EmprestimoController = new EmprestimoController(),
+    private readonly relatorioController: RelatorioController = new RelatorioController()
   ) {}
 
   async iniciar(): Promise<void> {
@@ -35,9 +36,7 @@ export class MenuPrincipalController {
       case "2": await this.livroController.iniciar(); break;
       case "3": await this.clienteController.iniciar(); break;
       case "4": await this.emprestimoController.iniciar(); break;
-      case "5":
-        console.log("\nMódulo ainda não disponível.");
-        break;
+      case "5": await this.relatorioController.iniciar(); break;
       case "0": return true;
       default: console.log("Opção inválida.");
     }
